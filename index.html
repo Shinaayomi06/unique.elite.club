@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Unique Elite Club — Together We Rise</title>
+<meta name="description" content="Unique Elite Club is a social club based in Lagos, Nigeria, built on unity, commitment, accountability, and collective growth." />
+<style>
+  :root{
+    --purple:#6a1b9a; --purple-dark:#4a148c;
+    --pink:#e91e63; --gold:#f9a825;
+    --teal:#00897b; --blue:#1e88e5; --green:#43a047;
+    --ink:#1a1a2e; --muted:#5c5c72;
+    --bg:#ffffff; --card:#ffffff;
+    --shadow:0 10px 30px rgba(26,26,46,.12);
+    --radius:18px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;overflow-x:hidden;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+
+  /* NAVBAR */
+  header.nav{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid #eee;}
+  .nav-inner{max-width:1150px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;}
+  .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.3px;}
+  .brand .logo{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,var(--purple),var(--pink),var(--gold));color:#fff;display:grid;place-items:center;font-weight:900;font-size:18px;box-shadow:0 6px 16px rgba(233,30,99,.35);}
+  .brand span small{display:block;font-size:11px;font-weight:600;color:var(--muted);letter-spacing:2px;text-transform:uppercase;}
+  .brand span b{font-size:18px;}
+  nav.menu ul{display:flex;gap:26px;list-style:none;}
+  nav.menu ul li a{font-weight:600;font-size:15px;color:var(--ink);position:relative;padding:4px 0;transition:color .25s;}
+  nav.menu ul li a::after{content:"";position:absolute;left:0;bottom:-2px;height:3px;width:0;background:linear-gradient(90deg,var(--pink),var(--gold),var(--teal));border-radius:3px;transition:width .3s;}
+  nav.menu ul li a:hover{color:var(--purple);}
+  nav.menu ul li a:hover::after{width:100%;}
+  .cta-btn{padding:11px 22px;border-radius:50px;font-weight:700;font-size:14px;color:#fff;background:linear-gradient(135deg,var(--pink),var(--purple));box-shadow:0 8px 20px rgba(106,27,154,.35);transition:transform .2s,box-shadow .2s;display:inline-block;}
+  .cta-btn:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(106,27,154,.45);}
+  .hamburger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;}
+  .hamburger span{width:26px;height:3px;background:var(--ink);border-radius:3px;transition:.3s;}
+
+  /* HERO */
+  .hero{position:relative;padding:90px 20px 110px;text-align:center;overflow:hidden;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(233,30,99,.18), transparent 45%),
+      radial-gradient(circle at 85% 15%, rgba(249,168,37,.20), transparent 45%),
+      radial-gradient(circle at 75% 85%, rgba(0,137,123,.18), transparent 45%),
+      radial-gradient(circle at 25% 90%, rgba(30,136,229,.15), transparent 45%),
+      linear-gradient(135deg,#faf5ff 0%,#fff8e1 50%,#e0f2f1 100%);}
+  .hero::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle, rgba(106,27,154,.08) 1.5px, transparent 1.5px);background-size:28px 28px;opacity:.6;pointer-events:none;}
+  .hero-inner{position:relative;max-width:880px;margin:0 auto;z-index:2;}
+  .badge{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid #f0e4ff;color:var(--purple);padding:8px 18px;border-radius:50px;font-size:13px;font-weight:700;letter-spacing:.5px;box-shadow:var(--shadow);margin-bottom:22px;}
+  .badge .dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 1.8s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.5;transform:scale(1.3);}}
+  .hero h1{font-size:clamp(38px,6vw,68px);line-height:1.08;font-weight:900;letter-spacing:-1px;margin-bottom:16px;}
+  .hero h1 .grad{background:linear-gradient(90deg,var(--purple),var(--pink),var(--gold),var(--teal),var(--blue));-webkit-background-clip:text;background-clip:text;color:transparent;background-size:300% 100%;animation:shine 8s linear infinite;}
+  @keyframes shine{0%{background-position:0% 50%;}100%{background-position:300% 50%;}}
+  .hero .slogan{display:inline-block;margin:6px 0 20px;font-size:20px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--pink);}
+  .hero .slogan::before,.hero .slogan::after{content:"★";margin:0 12px;color:var(--gold);}
+  .hero p.lead{font-size:18px;color:var(--muted);max-width:660px;margin:0 auto 34px;}
+  .hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:15px 30px;border-radius:50px;font-weight:700;font-size:15px;transition:transform .2s,box-shadow .2s,background .2s;border:2px solid transparent;}
+  .btn-primary{color:#fff;background:linear-gradient(135deg,var(--purple),var(--pink));box-shadow:0 12px 28px rgba(233,30,99,.35);}
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 34px rgba(233,30,99,.45);}
+  .btn-outline{background:#fff;color:var(--purple);border-color:var(--purple);}
+  .btn-outline:hover{background:var(--purple);color:#fff;transform:translateY(-3px);}
+
+  /* STATS */
+  .stats{max-width:1050px;margin:-55px auto 0;position:relative;z-index:5;padding:0 20px;}
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;}
+  .stat{padding:28px 18px;text-align:center;position:relative;transition:background .25s;}
+  .stat:not(:last-child)::after{content:"";position:absolute;right:0;top:22%;height:56%;width:1px;background:#eee;}
+  .stat:hover{background:linear-gradient(135deg,#faf5ff,#fff8e1);}
+  .stat .num{font-size:30px;font-weight:900;letter-spacing:-.5px;background:linear-gradient(90deg,var(--purple),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .stat .label{font-size:13px;color:var(--muted);font-weight:600;margin-top:4px;letter-spacing:.5px;}
+
+  /* SECTIONS */
+  section{padding:80px 20px;}
+  .container{max-width:1100px;margin:0 auto;}
+  .section-head{text-align:center;max-width:700px;margin:0 auto 50px;}
+  .kicker{display:inline-block;font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--pink);margin-bottom:10px;}
+  .section-head h2{font-size:clamp(28px,4vw,42px);font-weight:900;letter-spacing:-.5px;line-height:1.15;}
+  .section-head h2 .grad{background:linear-gradient(90deg,var(--purple),var(--teal));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .section-head p{color:var(--muted);margin-top:14px;font-size:16px;}
+
+  /* ABOUT */
+  .about-wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:50px;align-items:center;}
+  .about-text p{color:var(--muted);margin-bottom:16px;font-size:16px;}
+  .about-text .mission-box{margin-top:22px;padding:22px;border-radius:var(--radius);background:linear-gradient(135deg,#f3e5f5,#e0f2f1);border-left:6px solid var(--purple);}
+  .mission-box h4{color:var(--purple);margin-bottom:6px;font-size:16px;letter-spacing:.5px;text-transform:uppercase;}
+  .mission-box p{margin:0;color:var(--ink);font-size:15px;}
+  .values-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .value-card{background:var(--card);border-radius:16px;padding:22px 20px;box-shadow:var(--shadow);border-top:5px solid var(--c);transition:transform .25s,box-shadow .25s;}
+  .value-card:hover{transform:translateY(-6px);box-shadow:0 16px 34px rgba(26,26,46,.16);}
+  .value-card .icon{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;font-size:22px;margin-bottom:12px;background:color-mix(in srgb,var(--c) 15%, #fff);color:var(--c);}
+  .value-card h4{font-size:16px;margin-bottom:6px;}
+  .value-card p{font-size:13.5px;color:var(--muted);line-height:1.55;}
+
+  /* FEATURES */
+  .features{background:linear-gradient(180deg,#fff,#faf5ff 100%);}
+  .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .feature{background:#fff;border-radius:var(--radius);padding:28px 24px;box-shadow:var(--shadow);position:relative;overflow:hidden;transition:transform .25s;}
+  .feature:hover{transform:translateY(-6px);}
+  .feature::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--c1),var(--c2));}
+  .feature .f-icon{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;font-size:24px;background:linear-gradient(135deg,var(--c1),var(--c2));color:#fff;margin-bottom:16px;}
+  .feature h3{font-size:17px;margin-bottom:8px;}
+  .feature p{font-size:14px;color:var(--muted);}
+
+  /* RULES */
+  .rules{background:linear-gradient(135deg,#1a1a2e,#2d1b4e 55%,#4a148c);color:#fff;position:relative;overflow:hidden;}
+  .rules::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 10% 10%, rgba(233,30,99,.25), transparent 40%),radial-gradient(circle at 90% 90%, rgba(249,168,37,.22), transparent 40%);pointer-events:none;}
+  .rules .container{position:relative;z-index:2;}
+  .rules .section-head h2{color:#fff;}
+  .rules .section-head p{color:#c9c3e0;}
+  .rules .kicker{color:var(--gold);}
+  .rules-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+  .rule{display:flex;gap:14px;padding:20px;border-radius:14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(6px);transition:background .25s,transform .25s;}
+  .rule:hover{background:rgba(255,255,255,.12);transform:translateX(4px);}
+  .rule .n{flex:0 0 34px;height:34px;border-radius:50%;display:grid;place-items:center;font-weight:900;font-size:14px;color:#1a1a2e;background:linear-gradient(135deg,var(--gold),#ffd54f);}
+  .rule p{font-size:14.5px;color:#e8e4f5;line-height:1.55;}
+
+  /* CTA BANNER */
+  .cta-banner{padding:70px 20px;text-align:center;color:#fff;background:radial-gradient(circle at 20% 30%, rgba(255,255,255,.25), transparent 40%),radial-gradient(circle at 80% 70%, rgba(255,255,255,.18), transparent 40%),linear-gradient(135deg,var(--purple),var(--pink) 50%,var(--gold));}
+  .cta-banner h2{font-size:clamp(26px,4vw,40px);font-weight:900;margin-bottom:14px;letter-spacing:-.5px;}
+  .cta-banner p{max-width:620px;margin:0 auto 28px;font-size:17px;color:rgba(255,255,255,.92);}
+  .cta-banner .btn-white{background:#fff;color:var(--purple);box-shadow:0 12px 28px rgba(0,0,0,.2);}
+  .cta-banner .btn-white:hover{transform:translateY(-3px);}
+
+  /* CONTACT */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;}
+  .contact-card{background:#fff;border-radius:var(--radius);padding:28px;box-shadow:var(--shadow);display:flex;gap:18px;align-items:flex-start;border-left:6px solid var(--c);transition:transform .25s;}
+  .contact-card:hover{transform:translateY(-5px);}
+  .contact-card .c-icon{flex:0 0 54px;height:54px;border-radius:14px;display:grid;place-items:center;font-size:24px;background:color-mix(in srgb,var(--c) 15%, #fff);color:var(--c);}
+  .contact-card h4{font-size:15px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+  .contact-card p,.contact-card a{font-size:16px;font-weight:600;color:var(--ink);word-break:break-word;}
+  .contact-card a:hover{color:var(--pink);}
+
+  /* FOOTER */
+  footer{background:#12121f;color:#b9b6cc;padding:50px 20px 24px;}
+  .footer-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;}
+  footer .brand{color:#fff;}
+  footer .brand .logo{box-shadow:none;}
+  footer p{font-size:14px;margin-top:14px;line-height:1.7;color:#8f8ca6;}
+  footer h5{color:#fff;font-size:14px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;}
+  footer ul{list-style:none;}
+  footer ul li{margin-bottom:9px;font-size:14px;}
+  footer ul li a:hover{color:var(--gold);}
+  .socials{display:flex;gap:10px;margin-top:16px;}
+  .socials a{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;background:rgba(255,255,255,.07);font-size:16px;transition:.25s;}
+  .socials a:hover{background:linear-gradient(135deg,var(--pink),var(--purple));transform:translateY(-3px);}
+  .copyright{max-width:1100px;margin:36px auto 0;padding-top:22px;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:13px;color:#7d7a95;}
+
+  /* REVEAL */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal.visible{opacity:1;transform:none;}
+
+  /* RESPONSIVE */
+  @media (max-width:980px){
+    .about-wrap{grid-template-columns:1fr;}
+    .features-grid{grid-template-columns:1fr 1fr;}
+    .contact-grid{grid-template-columns:1fr;}
+    .footer-inner{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:760px){
+    nav.menu{position:fixed;top:73px;right:0;width:min(280px,80vw);background:#fff;box-shadow:-10px 10px 40px rgba(0,0,0,.12);padding:22px;border-radius:0 0 0 20px;transform:translateX(110%);transition:transform .3s;height:calc(100vh - 73px);}
+    nav.menu.open{transform:translateX(0);}
+    nav.menu ul{flex-direction:column;gap:20px;}
+    .hamburger{display:flex;}
+    .nav-inner .cta-btn{display:none;}
+    .stats-grid{grid-template-columns:1fr 1fr;}
+    .stat:nth-child(2)::after{display:none;}
+    .stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid #eee;}
+    .features-grid{grid-template-columns:1fr;}
+    .rules-grid{grid-template-columns:1fr;}
+    .values-grid{grid-template-columns:1fr;}
+    .footer-inner{grid-template-columns:1fr;}
+    .hero{padding:70px 20px 100px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand">
+      <div class="logo">UE</div>
+      <span><b>Unique Elite Club</b><small>Together We Rise</small></span>
+    </a>
+    <nav class="menu" id="menu">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#values">Values</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#rules">Rules</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <a href="#contact" class="cta-btn">Join the Club</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <div class="badge"><span class="dot"></span> Lagos, Nigeria · Social Club</div>
+    <h1>Welcome to <span class="grad">Unique Elite Club</span></h1>
+    <div class="slogan">Together We Rise</div>
+    <p class="lead">A community built on unity, commitment, accountability, and collective growth. We support one another, stay accountable, and grow — together.</p>
+    <div class="hero-btns">
+      <a href="#features" class="btn btn-primary">Explore the Club →</a>
+      <a href="#contact" class="btn btn-outline">Get in Touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-grid">
+    <div class="stat"><div class="num">6</div><div class="label">Core Values</div></div>
+    <div class="stat"><div class="num">Sunday</div><div class="label">Meeting Day</div></div>
+    <div class="stat"><div class="num">100%</div><div class="label">Transparency</div></div>
+    <div class="stat"><div class="num">1</div><div class="label">United Community</div></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">About Us</span>
+      <h2>A Community Built on <span class="grad">Trust &amp; Growth</span></h2>
+      <p>Unique Elite Club is a community of members committed to friendship, mutual support, discipline, participation, and collective development.</p>
+    </div>
+    <div class="about-wrap">
+      <div class="about-text reveal">
+        <p>We encourage active participation in meetings, transparency in financial contributions, respect for club rules, and collaboration among members. Every member matters, and every contribution counts.</p>
+        <p>Our website is being developed to make membership management easier, improve communication, and support the club's administrative activities — from registration and digital membership cards to attendance, dues, and savings records.</p>
+        <div class="mission-box">
+          <h4>Our Mission</h4>
+          <p>To build a united and responsible community where members support one another, maintain accountability, participate actively in club activities, and work toward shared goals.</p>
+        </div>
+        <div class="mission-box" style="border-left-color:var(--teal);margin-top:14px;">
+          <h4 style="color:var(--teal);">Our Vision</h4>
+          <p>To develop Unique Elite Club into a well-organised, transparent, and sustainable organisation that promotes friendship, responsible savings, mutual development, and long-term collective success.</p>
+        </div>
+      </div>
+      <div class="values-grid reveal" id="values">
+        <div class="value-card" style="--c:var(--purple);"><div class="icon">🤝</div><h4>Unity</h4><p>Working together as one community.</p></div>
+        <div class="value-card" style="--c:var(--pink);"><div class="icon">💪</div><h4>Commitment</h4><p>Taking club membership and responsibilities seriously.</p></div>
+        <div class="value-card" style="--c:var(--blue);"><div class="icon">✅</div><h4>Accountability</h4><p>Maintaining responsibility for individual actions and obligations.</p></div>
+        <div class="value-card" style="--c:var(--gold);"><div class="icon">🔍</div><h4>Transparency</h4><p>Promoting clear records of contributions and club activities.</p></div>
+        <div class="value-card" style="--c:var(--teal);"><div class="icon">💚</div><h4>Respect</h4><p>Treating every member fairly and respectfully.</p></div>
+        <div class="value-card" style="--c:var(--green);"><div class="icon">🌱</div><h4>Growth</h4><p>Supporting personal, financial, and collective development.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">The Platform</span>
+      <h2>What You Can <span class="grad">Do Here</span></h2>
+      <p>A central online platform for members and club administrators — from registration to recordkeeping.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature reveal" style="--c1:var(--purple);--c2:var(--pink);"><div class="f-icon">📝</div><h3>Register &amp; Apply</h3><p>Create a member account and submit your membership application online.</p></div>
+      <div class="feature reveal" style="--c1:var(--blue);--c2:var(--teal);"><div class="f-icon">🔐</div><h3>Secure Login</h3><p>Authentication and role-based access for members and administrators.</p></div>
+      <div class="feature reveal" style="--c1:var(--gold);--c2:#ff7043;"><div class="f-icon">🪪</div><h3>Digital ID Card</h3><p>Member profiles with unique membership numbers and printable digital cards.</p></div>
+      <div class="feature reveal" style="--c1:var(--pink);--c2:#ff7043;"><div class="f-icon">📣</div><h3>Announcements</h3><p>Stay informed with club announcements and administrative updates.</p></div>
+      <div class="feature reveal" style="--c1:var(--teal);--c2:var(--green);"><div class="f-icon">📅</div><h3>Attendance Tracking</h3><p>Meeting attendance records, missed-meeting tracking, and applicable penalties.</p></div>
+      <div class="feature reveal" style="--c1:var(--purple);--c2:var(--blue);"><div class="f-icon">💰</div><h3>Financial Records</h3><p>Dues, contributions, payments, savings, and investment records — all in one place.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- RULES -->
+<section class="rules" id="rules">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">Membership Guidelines</span>
+      <h2>How We Stay <span style="color:var(--gold);">United &amp; Accountable</span></h2>
+      <p>Unique Elite Club promotes active participation and compliance with our established rules.</p>
+    </div>
+    <div class="rules-grid">
+      <div class="rule reveal"><div class="n">1</div><p>Physical meetings are held on <b>Sundays</b>.</p></div>
+      <div class="rule reveal"><div class="n">2</div><p>New members must attend a physical meeting for recognition.</p></div>
+      <div class="rule reveal"><div class="n">3</div><p>Members should avoid missing three consecutive meetings.</p></div>
+      <div class="rule reveal"><div class="n">4</div><p>Members who miss three consecutive meetings may be temporarily suspended from the WhatsApp group until they attend physically and reactivate their participation.</p></div>
+      <div class="rule reveal"><div class="n">5</div><p>Continued absence may result in funds being treated as dormant in accordance with club rules.</p></div>
+      <div class="rule reveal"><div class="n">6</div><p>Financial contributions and payments should follow the club's agreed schedule.</p></div>
+      <div class="rule reveal"><div class="n">7</div><p>Late payments may attract a penalty where approved by the club.</p></div>
+      <div class="rule reveal"><div class="n">8</div><p>The secretary and treasurer are responsible for maintaining appropriate records and receipts.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-banner">
+  <div class="reveal">
+    <h2>Be Part of Something Elite</h2>
+    <p>Friendship, accountability, responsible savings, and shared growth. Join a community that rises together.</p>
+    <a href="#contact" class="btn btn-white">Contact the Club</a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">Get in Touch</span>
+      <h2>We'd Love to <span class="grad">Hear From You</span></h2>
+      <p>For club enquiries, membership information, or website-related matters.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card reveal" style="--c:var(--purple);"><div class="c-icon">📍</div><div><h4>Address</h4><p>Falade Street, Shomolu/Bariga,<br/>Lagos State, Nigeria</p></div></div>
+      <div class="contact-card reveal" style="--c:var(--pink);"><div class="c-icon">✉️</div><div><h4>Email</h4><a href="mailto:Fatai.ganiyu06@gmail.com">Fatai.ganiyu06@gmail.com</a></div></div>
+      <div class="contact-card reveal" style="--c:var(--teal);"><div class="c-icon">📞</div><div><h4>Phone</h4><a href="tel:+2347064954673">+234 706 495 4673</a></div></div>
+      <div class="contact-card reveal" style="--c:var(--gold);"><div class="c-icon">🗓️</div><div><h4>Meetings</h4><p>Every Sunday · Physical meetings</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <a href="#top" class="brand">
+        <div class="logo">UE</div>
+        <span><b>Unique Elite Club</b><small>Together We Rise</small></span>
+      </a>
+      <p>A community built on unity, commitment, accountability, and collective growth. Based in Lagos, Nigeria.</p>
+      <div class="socials">
+        <a href="mailto:Fatai.ganiyu06@gmail.com" title="Email">✉️</a>
+        <a href="tel:+2347064954673" title="Call">📞</a>
+        <a href="#top" title="Back to top">↑</a>
+      </div>
+    </div>
+    <div>
+      <h5>Quick Links</h5>
+      <ul>
+        <li><a href="#about">About the Club</a></li>
+        <li><a href="#values">Core Values</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#rules">Membership Rules</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Contact</h5>
+      <ul>
+        <li>Falade Street, Shomolu/Bariga</li>
+        <li>Lagos State, Nigeria</li>
+        <li><a href="mailto:Fatai.ganiyu06@gmail.com">Fatai.ganiyu06@gmail.com</a></li>
+        <li><a href="tel:+2347064954673">+234 706 495 4673</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="copyright">
+    <span>© <span id="year"></span> Unique Elite Club. All rights reserved.</span>
+    <span>Together We Rise ★</span>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu toggle
+  const hamburger = document.getElementById('hamburger');
+  const menu = document.getElementById('menu');
+  hamburger.addEventListener('click', () => menu.classList.toggle('open'));
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
+
+  // Scroll reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Auto year
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>.        Does this code has css
