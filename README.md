@@ -1,1 +1,3 @@
-# unique.elite.club
+
+# Unique Elite Club
+> Together we rise
